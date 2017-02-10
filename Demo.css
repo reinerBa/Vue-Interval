@@ -1,0 +1,39 @@
+﻿body {
+}
+.box{
+    min-height:40px;
+    min-width:350px;
+    margin-bottom:16px;
+    margin-top:16px;
+
+}
+.rot{
+    -webkit-transform: rotate(45deg); 
+     transform: rotate(45deg);
+}
+.round{
+    -webkit-transform: rotate(45deg); 
+     transform: rotate(45deg);
+    border-radius:50%;
+}
+.border{
+    border:1px solid black;
+    padding:5px;
+    min-width:16px;
+    height:16px;
+    background-color:sandybrown;
+    box-shadow:inset 1px 1px 1px orange;
+}
+.dashy{
+    padding-top:8px;
+    border-bottom:1px dashed gray;
+    border-top:1px dashed gray;
+    display:inline-flex;
+    justify-content: space-between;
+}
+.cent{
+    text-align:center;
+}
+.yellow{
+    background-color:yellow;
+}
