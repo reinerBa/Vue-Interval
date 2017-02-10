@@ -20,9 +20,6 @@ An interval mixin to call static vue-functions in an interval, update values, ge
 * use dateNow as Date.now() persistence that gets updated every secound
 * [] update intervals adjustable
 
-# Status
-I want to have all relevant functions till 2017.
-
 # Usage
 To global register the mixin just add the script
 
