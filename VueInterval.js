@@ -1,9 +1,17 @@
-﻿//Vue interval mixin
+/**
+ * Vue-Interval
+ * @Url: https://github.com/reinerBa/Vue-Interval
+ * @License: MIT, Reiner Bamberger
+ */
 
 // define a mixin object
 var vueinterval = {
-    data: { "interval_Array": [],ticker:0,dateNow:Date.now() },
-    methods:{
+    data: { 
+        interval_Array: [],
+        ticker:0,
+        dateNow:Date.now() 
+    },
+    methods: {
         setVueInterval:function(fn,time){
             var id = setInterval(fn, time);
             this.interval_Array.push({ fn: fn, time: time, intID: id });
@@ -36,15 +44,14 @@ var vueinterval = {
                     return id;
                 }
             }
-        },
-
+        }
     },
     created: function () {
         var self = this;
         function actTicks() {
             self.ticker++;
             self.dateNow = Date.now();
-        }
+        };
         this.interval_Array.push({ fn: actTicks, time: 1e3, intID: null });
         var keys = Object.keys(this);
 
@@ -54,8 +61,8 @@ var vueinterval = {
                 this.interval_Array.push({ fn: this[keys[i]], time: Number(time), intID: null });
             }
         }
-
-        console.log('created mixin! ' + this.interval_Array.length);
+        if(Vue.config.debug)
+            console.log('created mixin! ' + this.interval_Array.length);
     },
     mounted: function () {     
         for (var i = 0; i < this.interval_Array.length; i++) {
