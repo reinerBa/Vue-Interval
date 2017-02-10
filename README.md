@@ -30,9 +30,9 @@ To global register the mixin just add the script
 To use the interval feautes include the mixin in a component
 
     new Vue({
-    el: "#app",
-    mixins:[vueinterval],
-    data: {...
+        el: "#app",
+        mixins:[vueinterval],
+        data: {...
 
 After this you can use the interval variables `ticker` and `dateNow`. The first variable just counts up from zero every secound, where 0 is the moment when the component was created. The secound variable is the current Date.now() which is also updated every secound. 
 
