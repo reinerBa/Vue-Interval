@@ -2,8 +2,10 @@
 An interval mixin to call static vue-functions in an interval, update values, get current time and dynamic interval management
 
 - Dependencies: Only Vue.js 2.0
+- Demo: [link](https://reinerba.github.io/Vue-Interval/Demo.html "Demo")
 
-#Features
+# Features
+
 ## Functions
 * Automatically recognize Vue-Element methods that starts with Interval__[Timeinterval]$ as interval methods and execute/stop them on dismount
 * Add new intervals with setVueInterval.
@@ -38,9 +40,6 @@ To write a method in your component which is triggered in interval just use the 
     INTERVAL__1e4$myUpdateMethod: function (a) {
             Ajax.get('/update/opentasks');
         }
-
-# Demo 
-[Demo](https://reinerba.github.io/Vue-Interval/Demo.html "Demo")
 
 # License
 MIT
