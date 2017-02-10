@@ -19,9 +19,10 @@ Only compatible with vue 2.0.
 * use dateNow as Date.now() persistence that gets updated every secound
 * [] update intervals adjustable
 
-#Status
+# Status
 I want to have all relevant functions till 2017.
 
-#Usage
+# Usage
 
-#Demo 
+# Demo 
+[Demo](https://reinerba.github.io/Vue-Interval/Demo.html "Demo")
