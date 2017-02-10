@@ -1,8 +1,8 @@
 # Vue-Interval
 An interval mixin to call static vue-functions in an interval, update values, get current time and dynamic interval management
 
-- Dependencies: Only Vue.js 2.0
-- Demo: [link](https://reinerba.github.io/Vue-Interval/Demo.html "Demo")
+- **Dependencies:** Only Vue.js 2.0
+- **Demo:** [link](https://reinerba.github.io/Vue-Interval/Demo.html "Demo")
 
 # Features
 
