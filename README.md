@@ -23,8 +23,9 @@ An interval mixin to call static vue-functions in an interval, update values, ge
 * [] update intervals adjustable
 
 # Usage
-To global register the mixin just add the script
+To global register the mixin just add the script in the head tag (or somewhere in the body)
 
+    <script src="VueInterval.js" type="text/javascript"></script>
 
 To use the interval feautes include the mixin in a component
 
@@ -40,6 +41,8 @@ To write a method in your component which is triggered in interval just use the 
     INTERVAL__1e4$myUpdateMethod: function (a) {
             Ajax.get('/update/opentasks');
         }
+
+This method for instance will make an ajax call every 10 secounds `(1e4 => 10.000ms)`.
 
 # License
 MIT
