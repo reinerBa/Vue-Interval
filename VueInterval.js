@@ -56,7 +56,7 @@ var vueinterval = {
         var keys = Object.keys(this);
 
         for (var i = 0; i < keys.length; i++) {
-            if (keys[i].startsWith("INTERVAL__")) {
+            if (!keys[i].indexOf("INTERVAL__")) {
                 var time = keys[i].substring(10, keys[i].indexOf("$"));
                 this.interval_Array.push({ fn: this[keys[i]], time: Number(time), intID: null });
             }
