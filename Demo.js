@@ -10,7 +10,7 @@ var demo=new Vue({
         explode: 0,
         livingSecounds: 0,
         binaryRun: true,
-        tasks: [{end:new Date(Date.now()+4e3)}],
+        tasks: [{ ttl: 5e5, iid: null }],
     },
     computed:{
         nonreactive: function () {
@@ -26,24 +26,24 @@ var demo=new Vue({
             this.livingSecounds+=1+ (a ? a : 0);
         },
         addTask: function () {
-            var item = { end: new Date(1e4),iid:null };
-            var self = this;
-            item.iid=this.setVueInterval(function () {
-                item.end -= 1e3;
-                if (item.end <= 0)  self.tasks.splice(self.tasks.indexOf(item), 1);
-            }, 1e3);
+            var item = { ttl: 1e4,iid:null,active:false };
             this.tasks.push(item);
         },
+        startTask: function (t) {
+            var fnDel = this.deleteTask;
+            t.iid=this.setVueInterval(function () {
+                t.ttl -= 1000;
+                if (t.ttl <=0)
+                    fnDel(t);
+                if (t.ttl === 0) t.ttl = "Goodbye!";
+            }, 1e3);
+        },
         suspendTask: function (t) {
-            if(t.iid)t.iid= this.suspendVueInterval(t.iid);
+            if (t.iid && !isNaN(t.iid)) t.iid = this.suspendVueInterval(t.iid);
         },
         resumeTask: function (t) {
-            if (!t.iid) {
-                var self = this;
-                t.iid = this.setVueInterval(function () {
-                    item.end -= 1e3;
-                    if (item.end <= 0) self.tasks.splice(self.tasks.indexOf(item), 1);
-                }, 1e3);
+            if (!t.iid.indexOf('suspended')) {
+                t.iid = this.resumeVueInterval(t.iid);
             }
         },
         deleteTask: function (t) {

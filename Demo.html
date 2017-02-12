@@ -10,6 +10,17 @@
     <link rel="stylesheet" href="Demo.css" />
 </head>
 <body>
+    <style>.list-item {
+  display: inline-block;
+  margin-right: 10px;
+}
+.list-enter-active, .list-leave-active {
+  transition: all 1s;
+}
+.list-enter, .list-leave-to /* .list-leave-active for <2.1.8 */ {
+  opacity: 0;
+  transform: translateY(30px);
+}</style>
     <a href="">Reset</a>
 <h1>Vue-Interval Demo</h1>
 <div id="app">
@@ -31,12 +42,20 @@
         <span>Binary changes <input type="checkbox" v-model="binaryRun" /> </span>
         <div v-bind:class="{'rot':ticker%(1+binaryRun),'yellow':livingSecounds%2}" class="cent border">{{livingSecounds%2}}</div>
         <div v-turning="binaryRun" class="cent round border">^</div>
-        <div><button v-bind:disabled="!!(ticker%(1+binaryRun))" >On</button><button v-bind:disabled="!(ticker%(1+binaryRun))">Off</button></div>
+        <div v-turning="binaryRun" class="cent round border transi">^</div>
+        <div ><button v-bind:disabled="!!(ticker%(1+binaryRun))" >On</button><button v-bind:disabled="!(ticker%(1+binaryRun))">Off</button></div>
     </div>
     <div class="box dashy">
         <span><button v-on:click="addTask">+Task</button></span>
-        <span v-for="t in tasks" class="border"><button v-on:click="suspendTask(t)">||</button><button v-on:click="suspendTask(t)">></button><button v-on:click="deleteTask(t)">X</button>{{(t.end ) | hhmmssFilter}}</span>
-    </div>
+        <transition-group name="list" tag="p">
+            <span v-for="t in tasks" class="border task" v-bind:key="t" >
+                <button v-bind:disabled="t.iid!==null" v-on:click="startTask(t)">Go</button>
+                <button v-bind:disabled="t.iid===null || typeof t.iid==='string'" v-on:click="suspendTask(t)">||</button>
+                <button v-bind:disabled="typeof t.iid!=='string'" v-on:click="resumeTask(t)">></button>
+                <button v-on:click="deleteTask(t)">X</button>{{t.ttl | hhmmssFilter}}
+            </span>
+        </transition-group>
+</div>
 </div>
     <script src="Demo.js" type="text/javascript"></script>
 </body>

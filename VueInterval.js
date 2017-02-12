@@ -1,7 +1,7 @@
 /**
- * Vue-Interval
+ * Vue-Interval by Reiner Bamberger 
  * @Url: https://github.com/reinerBa/Vue-Interval
- * @License: MIT, Reiner Bamberger
+ * @License: MIT
  */
 
 // define a mixin object
@@ -13,29 +13,31 @@ var vueinterval = {
     },
     methods: {
         setVueInterval:function(fn,time){
-            var id = setInterval(fn, time);
-            this.interval_Array.push({ fn: fn, time: time, intID: id });
-            return id;
+            var iid = setInterval(fn, time);
+            this.interval_Array.push({ fn: fn, time: time, intID: iid });
+            return iid;
         },
-        removeVueInterval: function (id) {
+        removeVueInterval: function (iId) {
             for (var i = 0; i < this.interval_Array.length; i++) {
-                if (this.interval_Array[i].intID === id) {
-                    clearInterval(id);
+                if (this.interval_Array[i].intID === iId) {
+                    clearInterval(iId);
                     this.interval_Array.splice(i, 1);
-                    return ;
+                    return true;
                 }
-            }
+            } return false;
         },
         suspendVueInterval: function (iId) {
             var i=0, item;
             while (item = this.interval_Array[i++]) {
                 if (item.intID === iId) {
                     clearInterval(iId);
-                    return null;
+                    item.intID = "suspended" + item.intID;
+                    return item.intID;
                 }
             }
         },
         resumeVueInterval: function (iId) {
+            debugger;
             var i = -1, item;
             while (item = this.interval_Array[++i]) {
                 if (item.intID === iId) {
@@ -52,6 +54,7 @@ var vueinterval = {
             self.ticker++;
             self.dateNow = Date.now();
         };
+        //save fn for the ticker
         this.interval_Array.push({ fn: actTicks, time: 1e3, intID: null });
         var keys = Object.keys(this);
 
@@ -66,7 +69,8 @@ var vueinterval = {
     },
     mounted: function () {     
         for (var i = 0; i < this.interval_Array.length; i++) {
-            if (this.interval_Array[i].intID === null) this.interval_Array[i].intID = setInterval(this.interval_Array[i].fn, this.interval_Array[i].time);
+            if (this.interval_Array[i].intID === null)
+                this.interval_Array[i].intID = setInterval(this.interval_Array[i].fn, this.interval_Array[i].time);
         }
     },
     beforeDestroy:function() {

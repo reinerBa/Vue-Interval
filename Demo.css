@@ -23,11 +23,10 @@ body > a{float:right; font-size:80%;}
 .cnt-task{border-bottom:1px solid red;border-top:1px solid red;}
 .box{
     min-height:40px;
-    min-width:350px;
-    margin-bottom:16px;
-    margin-top:16px;
-
+    min-width:80%;
+    margin: 16px auto;
 }
+.transi{transition: all 1s linear 0s;}
 .rot{
     -webkit-transform: rotate(45deg); 
      transform: rotate(45deg);
@@ -44,6 +43,9 @@ body > a{float:right; font-size:80%;}
     height:16px;
     background-color:sandybrown;
     box-shadow:inset 1px 1px 1px orange;
+}
+.task{
+    height:auto !important;
 }
 .dashy{
     padding-top:8px;
