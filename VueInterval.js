@@ -37,7 +37,6 @@ var vueinterval = {
             }
         },
         resumeVueInterval: function (iId) {
-            debugger;
             var i = -1, item;
             while (item = this.interval_Array[++i]) {
                 if (item.intID === iId) {
