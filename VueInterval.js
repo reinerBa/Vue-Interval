@@ -14,15 +14,18 @@ var vueinterval = {
     methods: {
         setVueInterval:function(fn,delay,endFn,ttl){
             if (arguments.length === 4) {
-				var item={ 'fn': fn, 'delay': delay, 'intID': null,'endFn':endFn, 'loops':ttl/delay };
 				var fnDel = this.removeVueInterval;
-				item.intID = setInterval(function(){item.fn(); 
-					if(--item.loops<=0){
-						endFn();
-						fnDel(item.intID);
-					}
-					}, delay);
+				var item = { 'fn': null, 'delay': delay, 'intID': null, 'endFn': endFn, 'loops': ttl / delay };
+				item.fn = function () {
+				    fn();
+				    if (--item.loops <= 0) {
+				        endFn();
+				        fnDel(item.intID);
+				    }
+				};
+				item.intID = setInterval(item.fn, delay);
 				this.interval_Array.push(item);
+                return item.intID;
 			}
 			else if(arguments.length===2){
 				var iid = setInterval(fn, delay);
