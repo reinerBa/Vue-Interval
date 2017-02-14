@@ -51,9 +51,15 @@ body > a{float:right; font-size:80%;}
     padding-top:8px;
     border-bottom:1px dashed gray;
     border-top:1px dashed gray;
-    display:inline-flex;
+    display:flex;
     justify-content: space-between;
 }
+.flex{
+	display:flex;
+	flex-wrap:wrap;
+}
+.w100{width:100%;margin-left:1em;}
+.w100 > p{margin:0;}
 .cent{
     text-align:center;
 }

@@ -11,6 +11,10 @@ var demo=new Vue({
         livingSecounds: 0,
         binaryRun: true,
         tasks: [{ ttl: 5e5, iid: null }],
+		endMessage: "Goodbye",
+		endMessages: [],
+		t2interval: 1000,
+        t2time:5000
     },
     computed:{
         nonreactive: function () {
@@ -26,8 +30,16 @@ var demo=new Vue({
             this.livingSecounds+=1+ (a ? a : 0);
         },
         addTask: function () {
-            var item = { ttl: 1e4,iid:null,active:false };
+            var item = { ttl: 1e4,iid:null };
             this.tasks.push(item);
+        },
+        addTask2: function () {
+            var item = { ttl: 15e3, iid: null };
+            var self = this;
+            var message = this.endMessage;
+            this.setVueInterval(function () {
+                self.endMessages.push("Tick "+self.ticker + ": My message is " + message);
+            }, this.t2interval, function () { self.endMessages.push("<b>Callback: " + message + "</b>") }, this.t2time);
         },
         startTask: function (t) {
             var fnDel = this.deleteTask;

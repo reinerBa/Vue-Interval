@@ -46,17 +46,29 @@
         <div ><button v-bind:disabled="!!(ticker%(1+binaryRun))" >On</button><button v-bind:disabled="!(ticker%(1+binaryRun))">Off</button></div>
     </div>
     <div class="box dashy">
-        <span><button v-on:click="addTask">+Task</button></span>
-        <transition-group name="list" tag="p">
-            <span v-for="t in tasks" class="border task" v-bind:key="t" >
+        <span><button v-on:click="addTask">Add Task</button></span>
+        <transition-group name="list" tag="p" class="flex">
+            <div v-for="t in tasks" class="border task" v-bind:key="t" >
                 <button v-bind:disabled="t.iid!==null" v-on:click="startTask(t)">Go</button>
                 <button v-bind:disabled="t.iid===null || typeof t.iid==='string'" v-on:click="suspendTask(t)">||</button>
                 <button v-bind:disabled="typeof t.iid!=='string'" v-on:click="resumeTask(t)">></button>
                 <button v-on:click="deleteTask(t)">X</button>{{t.ttl | hhmmssFilter}}
-            </span>
+            </div>
         </transition-group>
+		</div>
+
+    <b>Interval/Countdown with callback at the end</b><br />
+    <div class="box dashy">
+        <span><button v-on:click="addTask2">Add Task with End-Callback</button>
+		<br /><label for="endMessage">Message</label>
+        <input v-on:keypress.enter="addTask2" id="endMessage" type="text" v-model="endMessage" placeholder="Endmessage"/>
+        <br /><label for="t2int">Interval length</label>
+        <input  v-on:keypress.enter="addTask2" id="t2int" type="number" v-model="t2interval" placeholder="1000" />
+        <br /><label for="t2time">Livingtime (Infinity is valid)</label>
+        <input v-on:keypress.enter="addTask2" id="t2time" type="type" v-model="t2time" placeholder="5000" /></span>
+        <div class="w100"><p v-for="m in endMessages" v-html="m"></p></div>
 </div>
-</div>
+    </div>
     <script src="Demo.js" type="text/javascript"></script>
 </body>
 </html>

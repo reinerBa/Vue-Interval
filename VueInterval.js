@@ -12,9 +12,21 @@ var vueinterval = {
         dateNow:Date.now() 
     },
     methods: {
-        setVueInterval:function(fn,time){
-            var iid = setInterval(fn, time);
-            this.interval_Array.push({ fn: fn, time: time, intID: iid });
+        setVueInterval:function(fn,delay,endFn,ttl){
+            if (arguments.length === 4) {
+				var item={ 'fn': fn, 'delay': delay, 'intID': null,'endFn':endFn, 'loops':ttl/delay };
+				var fnDel = this.removeVueInterval;
+				item.intID = setInterval(function(){item.fn(); 
+					if(--item.loops<=0){
+						endFn();
+						fnDel(item.intID);
+					}
+					}, delay);
+				this.interval_Array.push(item);
+			}
+			else if(arguments.length===2){
+				var iid = setInterval(fn, delay);
+				this.interval_Array.push({ fn: fn, delay: delay, intID: iid });}
             return iid;
         },
         removeVueInterval: function (iId) {
