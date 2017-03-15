@@ -1,5 +1,5 @@
 /**
- * Vue-Interval @@version@@
+ * Vue-Interval 0.1.0
  * @Url: https://github.com/reinerBa/Vue-Interval
  * @License: MIT, Reiner Bamberger 
  */
