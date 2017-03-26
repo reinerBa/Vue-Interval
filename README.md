@@ -7,28 +7,33 @@ An interval mixin to call static vue-functions in an interval, update values, ge
 
 # Features
 
+This mixin adds reactive data and method to your components:
+
 ## Functions
 * Automatically recognize Vue-Element methods that starts with Interval__[Timeinterval]$ as interval methods and execute/stop them on dismount
-* Add new intervals with setVueInterval.
+* Add new intervals with setVueInterval
+* Add new intervals with callback function after exceeding interval limit
 * Remove manually setted intervals with removeVueInterval
 * Suspend manually setted intervals with suspendVueInterval
 * Remove manually setted intervals with suspendVueInterval
 
-* [] Execute special fns after dismount
-* [] Functions with arguments
-
 ## Properties
-* Use ticker as a simple secound counter since creation
-* or to update computed properties every secound
-* use dateNow as Date.now() persistence that gets updated every secound
-* [] update intervals adjustable
+* Use `ticker` as a simple secound counter since creation
+* or to update the value non-reactive variables in computed properties every secound
+* use `dateNow` as Date.now() persistence that gets updated every secound
+* [WIP] update intervals adjustable
 
 # Usage
-To global register the mixin just add the script in the head tag (or somewhere in the body)
+It's available as npm package now and has a module defintion file for webpack
+
+    npm install vue-interval
+    import vueinterval from './VueInterval.common'
+
+To make the mixin globally available for every instance or component just add the script in the head tag (or somewhere in the body)
 
     <script src="VueInterval.js" type="text/javascript"></script>
 
-To use the interval feautes include the mixin in a component
+And add it to the desired components
 
     new Vue({
         el: "#app",

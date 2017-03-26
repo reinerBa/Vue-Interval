@@ -1,10 +1,10 @@
 /**
- * Vue-Interval @@version@@
+ * Vue-Interval 0.1.1
  * @Url: https://github.com/reinerBa/Vue-Interval
  * @License: MIT, Reiner Bamberger 
  */
 
-var vueinterval = {
+import Vue from 'Vue'; export default {
     data:function() {
 		return{ 
 			interval_Array : [],

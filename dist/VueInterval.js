@@ -1,16 +1,17 @@
 /**
- * Vue-Interval 0.1.0
+ * Vue-Interval 0.1.1
  * @Url: https://github.com/reinerBa/Vue-Interval
  * @License: MIT, Reiner Bamberger 
  */
 
-// define a mixin object
 var vueinterval = {
-    data: { 
-        interval_Array: [],
-        ticker:0,
-        dateNow:Date.now() 
-    },
+    data:function() {
+		return{ 
+			interval_Array : [],
+			ticker : 0,
+			dateNow : Date.now() 
+		}
+	},
     methods: {
         setVueInterval:function(fn,delay,endFn,ttl){
             if (arguments.length === 4) {

@@ -12,4 +12,10 @@ gulp.task('default',function(){
 		.pipe(uglify({preserveComments: 'license'}))
 		.pipe(rename('VueInterval.min.js'))
 		.pipe(gulp.dest('./dist/'));
+		
+	gulp.src('./VueInterval.js')
+		.pipe(replace(/(@@version@@)+/, version))		
+		.pipe(replace(/(var vueinterval =)+/, "import Vue from 'Vue'; export default"))
+		.pipe(rename('VueInterval.common.js'))
+		.pipe(gulp.dest('./dist/'));
 });
