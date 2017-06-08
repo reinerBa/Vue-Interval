@@ -22,8 +22,8 @@
     "url": "https://github.com/reinerBa/Vue-Interval/issues"
   },
   "homepage": "https://github.com/reinerBa/Vue-Interval#readme",
-    "dependencies": {
-    "vue": ">=2.1.7"
+  "peerDependencies": {
+    "vue": "2.x"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
