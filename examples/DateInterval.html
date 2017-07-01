@@ -1,0 +1,40 @@
+﻿<!--HtmlViewer:On-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue with an interval</title>
+	<meta charset="utf-8" />
+	<script src="https://unpkg.com/vue@2.3.4"></script>
+  <script src="simpleIntervalMixin.js"></script>
+</head>
+<body>
+  <h1>Current</h1>
+  <div id='app'>
+    <span>Date and Time: {{datenow | format}}</span>
+  </div>
+
+  <script>
+
+    new Vue({
+      mixins:[simpleIntervalMixin], //loaded in head
+      el: '#app',
+      data: {
+        datenow: Date.now()
+      },
+      methods: {
+        time() {
+          this.datenow = Date.now();
+        },
+      },
+      mounted() {
+        this.addInterval(this.time, 1000);
+      },
+      filters:{
+        format:function(d){
+          return new Date(d).toISOString();
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+﻿<!--HtmlViewer:On-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Binding intervals with vue</title>
+	<meta charset="utf-8" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script></head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+<body>
+  <div id='app'>
+    <span>{{datenow | format}}</span>
+  </div>
+  <script>
+  //Vue instance with simple interval binding
+    new Vue({
+      el: '#app',
+      data: {
+        datenow: Date.now()
+      },
+      methods: {
+        time() {
+          this.datenow = Date.now();
+        },
+      },
+      mounted() {
+        this.interval = setInterval(this.time, 1000)
+      },
+      beforeDestroy() {
+        clearInterval(this.interval)
+      },
+      filters:{
+        format:function(d){
+          return moment(d).format();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
