@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Vue-Interval @@version@@
  * @Url: https://github.com/reinerBa/Vue-Interval
  * @License: MIT, Reiner Bamberger

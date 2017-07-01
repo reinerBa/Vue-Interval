@@ -1,7 +1,7 @@
-/**
+﻿/**
  * little mixin for interval handling
  * Snipped from @Url: https://github.com/reinerBa/Vue-Interval
- * @License: WTFPL � Do What the Fuck You Want to Public License 
+ * @License: WTFPL – Do What the Fuck You Want to Public License 
 */
 
 var simpleIntervalMixin = {
