@@ -8,30 +8,31 @@ var vueinterval = {
   data:function() {
     return{
       interval_Array : [],
-    	ticker : 0,
-    	dateNow : Date.now()
+      ticker : 0,
+      dateNow : Date.now()
     }
-	},
+  },
   methods: {
     setVueInterval:function(fn,delay,endFn,ttl){
       if (arguments.length === 4) {
-    	var fnDel = this.removeVueInterval;
-    	var item = { 'fn': null, 'delay': delay, 'intID': null, 'endFn': endFn, 'loops': ttl / delay };
-    	item.fn = function () {
-  	    fn();
-  	    if (--item.loops <= 0) {
+      var fnDel = this.removeVueInterval;
+      var item = { 'fn': null, 'delay': delay, 'intID': null, 'endFn': endFn, 'loops': ttl / delay };
+      item.fn = function () {
+        fn();
+        if (--item.loops <= 0) {
           endFn();
           fnDel(item.intID);
-  	    }
-    	};
-    	item.intID = setInterval(item.fn, delay);
-    	this.interval_Array.push(item);
+        }
+      };
+      item.intID = setInterval(item.fn, delay);
+      this.interval_Array.push(item);
 
       return item.intID;
       } else if(arguments.length===2){
         var iid = setInterval(fn, delay);
-      	this.interval_Array.push({ fn: fn, delay: delay, intID: iid });}
-          return iid;
+        this.interval_Array.push({ fn: fn, delay: delay, intID: iid });
+	  }
+      return iid;
     },
     removeVueInterval: function (iId) {
       for (var i = 0; i < this.interval_Array.length; i++) {
@@ -40,7 +41,8 @@ var vueinterval = {
           this.interval_Array.splice(i, 1);
           return true;
         }
-      } return false;
+      }
+	  return false;
     },
     suspendVueInterval: function (iId) {
       var i=0, item;
