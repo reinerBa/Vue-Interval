@@ -4,7 +4,7 @@
  * @License: MIT, Reiner Bamberger
  */
 
-import Vue from 'Vue'; export default{
+import Vue from 'vue'; export default{
   data:function() {
     return{
       interval_Array : [],

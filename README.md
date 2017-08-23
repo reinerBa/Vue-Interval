@@ -1,4 +1,4 @@
-﻿# Vue-Interval
+# Vue-Interval
 [![NPM](https://nodei.co/npm/vue-interval.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/vue-interval/)
 
 An interval mixin to call static vue-functions in an interval, update values, get current time and dynamic interval management
