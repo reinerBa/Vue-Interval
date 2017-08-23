@@ -28,8 +28,9 @@ This mixin adds reactive data and method to your components:
 # Usage
 It's available as npm package now and has a module defintion file for webpack
 
-    npm install vue-interval
-    import vueinterval from './VueInterval.common'
+    npm install vue-interval -s
+    import vueinterval from 'vue-interval/dist/VueInterval.common'
+
 
 To make the mixin globally available for every instance or component just add the script in the head tag (or somewhere in the body)
 
