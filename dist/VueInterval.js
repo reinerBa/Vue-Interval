@@ -1,5 +1,5 @@
 /**
- * Vue-Interval 0.1.2
+ * Vue-Interval 0.1.4
  * @Url: https://github.com/reinerBa/Vue-Interval
  * @License: MIT, Reiner Bamberger
  */
@@ -63,7 +63,19 @@
           return id;
         }
       }
-    }
+    },
+	adjustVueTickerInterval: function (newInterval) {
+    newInterval = Number(newInterval)
+		if(isNaN(newInterval) || typeof(newInterval) !== 'number' || newInterval < 1)
+			return;
+		for (var i = 0; i < this.interval_Array.length; i++)
+			if(this.interval_Array[i].iType === 'tickerInterval'){
+				this.interval_Array[i].time = newInterval
+				clearInterval(this.interval_Array[i].intID);
+				this.interval_Array[i].intID = setInterval(this.interval_Array[i].fn, this.interval_Array[i].time);
+				break;
+			}
+	}
   },
   created: function () {
     var self = this;
@@ -72,7 +84,7 @@
       self.dateNow = Date.now();
     };
     //save fn for the ticker
-    this.interval_Array.push({ fn: actTicks, time: 1e3, intID: null });
+    this.interval_Array.push({ fn: actTicks, time: 1e3, intID: null, iType: 'tickerInterval'});
     var keys = Object.keys(this);
 
     for (var i = 0; i < keys.length; i++) {

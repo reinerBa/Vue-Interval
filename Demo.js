@@ -1,5 +1,5 @@
 ﻿
-var demo=new Vue({
+var demo = new Vue({
     el: "#app",
     mixins:[vueinterval],
     data: {
@@ -67,7 +67,7 @@ var demo=new Vue({
     filters: {
         hhmmssFilter: function (val) {
             if (!val) return "";
-            if(typeof val === 'number') 
+            if(typeof val === 'number')
                 val=new Date(val);
             var dateArray = val.toISOString().split(/[T:.]/g);
             return dateArray[1] + ":" + dateArray[2] + ":" + dateArray[3];
@@ -94,3 +94,21 @@ var demo=new Vue({
         }
     }
 })
+
+new Vue({
+    el: "#app2",
+    mixins:[vueinterval],
+    methods: {
+      changeTicker: function () {
+        var newTickerInterval = this.$refs.tickTime.value;
+        this.adjustVueTickerInterval(newTickerInterval);
+      }
+    },
+    computed: {
+      tickerIntervalTime: function () {
+        for (var i = 0; i < this.interval_Array.length; i++)
+    			if(this.interval_Array[i].iType === 'tickerInterval')
+    				return this.interval_Array[i].time
+      }
+    }
+  })

@@ -20,10 +20,10 @@ This mixin adds reactive data and method to your components:
 * Remove manually setted intervals with suspendVueInterval
 
 ## Properties
-* Use `ticker` as a simple secound counter since creation
+* Use `ticker` as a simple secound counter since creation (the interval can be adjusted)
 * or to update the value non-reactive variables in computed properties every secound
 * use `dateNow` as Date.now() persistence that gets updated every secound
-* [WIP] update intervals adjustable
+* update intervals adjustable
 
 # Usage
 It's available as npm package now and has a module defintion file for webpack

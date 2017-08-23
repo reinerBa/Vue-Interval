@@ -16,7 +16,7 @@ gulp.task('default',function(){
 		
 	gulp.src('./VueInterval.js')
 		.pipe(replace(/(@@version@@)+/, version))		
-		.pipe(tagReplace("/*ModuleDef*/", "import Vue from 'vue'; export default"))
+		.pipe(tagReplace("/*ModuleDef*/", "import Vue from 'vue';\nexport default"))
 		.pipe(rename('VueInterval.common.js'))
 		.pipe(gulp.dest('./dist/'));
 });
