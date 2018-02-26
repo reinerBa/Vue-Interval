@@ -41,7 +41,12 @@ And add it to the desired components
     new Vue({
         el: "#app",
         mixins:[vueinterval],
-        data: {...
+        data: {...},
+        methods: {
+          INTERVAL__1e3$ping: function () {
+            console.log('Another secound has passed')
+          }
+        },
 
 After this you can use the interval variables `ticker` and `dateNow`. The first variable just counts up from zero every secound, where 0 is the moment when the component was created. The secound variable is the current Date.now() which is also updated every secound. 
 
