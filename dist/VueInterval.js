@@ -4,7 +4,7 @@
  * @License: MIT, Reiner Bamberger
  */
 
-/*ModuleDef*/ var vueinterval = /*ModuleDef*/{
+ var vueinterval = {
   data:function() {
     return{
       interval_Array : [],

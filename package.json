@@ -4,8 +4,11 @@
   "description": "A vue mixin to use methods as intervals, show times and values in intervals and dynamic interval management",
   "main": "VueInterval.js",
   "scripts": {
+    "build": "gulp",
+    "format": "standard -fix",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "demo": "live-server --open=Demo.html"
+    "demo": "live-server --open=Demo.html",
+    "eslint": "standard"
   },
   "repository": {
     "type": "git",
@@ -27,11 +30,12 @@
     "vue": "2.x"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-rename": "^1.2.2",
+    "gulp": "^4.0.1",
+    "gulp-rename": "^1.4.0",
     "gulp-replace": "^0.5.4",
     "gulp-tag-content-replace": "0.0.1",
-    "gulp-uglify": "^2.1.0",
-    "live-server": "^1.2.0"
+    "gulp-uglify": "^2.1.2",
+    "live-server": "^1.2.1",
+    "standard": "^12.0.1"
   }
 }

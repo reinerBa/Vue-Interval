@@ -6,17 +6,25 @@ var tagReplace = require('gulp-tag-content-replace');
 var fs = require('fs')
 var version = JSON.parse(fs.readFileSync('package.json', 'utf8')).version
 
-gulp.task('default',function(){
-	gulp.src('./VueInterval.js')
+
+function browser(cb){
+  return gulp.src('./VueInterval.js')
 		.pipe(replace(/(@@version@@)+/, version))
+		.pipe(replace("/*ModuleDef*/", ""))
 		.pipe(gulp.dest('./dist/'))
 		.pipe(uglify({preserveComments: 'license'}))
 		.pipe(rename('VueInterval.min.js'))
 		.pipe(gulp.dest('./dist/'));
-		
-	gulp.src('./VueInterval.js')
+}
+
+function umd(cb){
+  return gulp.src('./VueInterval.js')
 		.pipe(replace(/(@@version@@)+/, version))		
 		.pipe(tagReplace("/*ModuleDef*/", "import Vue from 'vue';\nexport default"))
 		.pipe(rename('VueInterval.common.js'))
 		.pipe(gulp.dest('./dist/'));
-});
+}
+
+exports.browser = browser
+exports.umd = umd
+exports.default = gulp.parallel(browser, umd)
