@@ -5,8 +5,7 @@
   "main": "VueInterval.js",
   "scripts": {
     "build": "gulp",
-    "format": "standard -fix",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "standard --fix",
     "demo": "live-server --open=Demo.html",
     "eslint": "standard"
   },
