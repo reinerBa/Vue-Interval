@@ -4,7 +4,7 @@
  * @License: MIT, Reiner Bamberger
  */
 
- var vueinterval = {
+var vueinterval = {
   data: function () {
     return {
       interval_Array: [],

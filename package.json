@@ -29,7 +29,7 @@
     "vue": "2.x"
   },
   "devDependencies": {
-    "gulp": "^4.0.1",
+    "gulp": "^4.0.2",
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^0.5.4",
     "gulp-tag-content-replace": "0.0.1",
